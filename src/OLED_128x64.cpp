@@ -366,7 +366,6 @@ void oled_update()
 void clear_screen()
 {
   memset(buffer, 0, BUFFER_SIZE);
-  oled_update();
 }
 
 void invert_screen()
@@ -448,7 +447,7 @@ void print_text(uint8_t row, const char *text)
   }
 }
 
-void print_smchar(unsigned char x, unsigned char y, unsigned char ch, bool scr)
+void print_smchar(unsigned char x, unsigned char y, char ch, bool scr)
 {
   unsigned int index = 0;
   unsigned int i = 0;
@@ -477,11 +476,11 @@ void print_smchar(unsigned char x, unsigned char y, unsigned char ch, bool scr)
     if (i == 5)
       buffer[index++] = 0x00;
     else
-      buffer[index++] = font_6x8[ch - 32][i];
+      buffer[index++] = font_6x8[(unsigned char)ch - 32][i];
   }
 }
 
-void print_smtext(unsigned char row, const unsigned char *dataPtr, bool scr)
+void print_smtext(unsigned char row, const char *dataPtr, bool scr)
 {   //print small font text, input is row on LCD, text to print, should the text be scrollable(0/1)
   unsigned char x = 1;         // variable for X coordinate
 

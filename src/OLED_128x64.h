@@ -12,8 +12,8 @@ void normal_screen();
 void oled_update();
 
 void print_text(uint8_t row, const char *text);
-void print_smchar(unsigned char x, unsigned char y, unsigned char ch, bool scr);
-void print_smtext(unsigned char row, const unsigned char *dataPtr, bool scr);
+void print_smchar(unsigned char x, unsigned char y, char ch, bool scr);
+void print_smtext(unsigned char row, const char *dataPtr, bool scr);
 void drawPixel(unsigned char x, unsigned char y);
 void drawLine(int x1, int y1, int x2, int y2);
 void drawRectangle(int x1, int y1, int x2, int y2);
