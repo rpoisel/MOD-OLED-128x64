@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
+#include "OLED_128x64.h"
 
 #define ADDRESS 0x3c
 #define COMMAND 0x80
@@ -476,7 +477,7 @@ void print_smchar(unsigned char x, unsigned char y, char ch, bool scr)
     if (i == 5)
       buffer[index++] = 0x00;
     else
-      buffer[index++] = font_6x8[(unsigned char)ch - 32][i];
+      buffer[index++] = font_6x8[(unsigned char) ch - 32][i];
   }
 }
 
