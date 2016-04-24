@@ -46,6 +46,12 @@ void Olimex_128x64::drawPixel(int16_t x, int16_t y, uint16_t color)
   buffer[index] |= 1 << (y % 8);
 }
 
+void Olimex_128x64::begin(uint8_t sda_pin, uint8_t scl_pin)
+{
+  Wire.begin(sda_pin, scl_pin);
+  begin();
+}
+
 void Olimex_128x64::begin(void)
 {
   send_command(0xAE);

@@ -14,6 +14,8 @@ public:
   virtual ~Olimex_128x64(void);
 
   virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
+
+  void begin(uint8_t sda_pin, uint8_t scl_pin);
   void begin(void);
   void display(void);
 
