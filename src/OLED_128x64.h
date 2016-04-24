@@ -3,24 +3,31 @@
 
 #include <stdint.h>
 
-void oled_setup();
+#include <Adafruit_GFX.h>
 
-void clear_screen();
-void invert_screen();
-void normal_screen();
+#define BUFFER_SIZE 1024
 
-void oled_update();
+class Olimex_128x64: public Adafruit_GFX
+{
+public:
+  Olimex_128x64(void);
+  virtual ~Olimex_128x64(void);
 
-void print_text(uint8_t row, const char *text);
-void print_smchar(unsigned char x, unsigned char y, char ch, bool scr);
-void print_smtext(unsigned char row, const char *dataPtr, bool scr);
-void drawPixel(unsigned char x, unsigned char y);
-void drawLine(int x1, int y1, int x2, int y2);
-void drawRectangle(int x1, int y1, int x2, int y2);
-void drawSolidRectangle(int x1, int y1, int x2, int y2);
-void Ellipse4Points(int CX, int CY, int X, int Y);
-void drawEllipse(int CX, int CY, int XRadius, int YRadius);
-void drawCircle(int x, int y, int r);
-void drawTriangle(int x1, int y1, int x2, int y2, int x3, int y3);
+  virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
+  void begin(void);
+  void display(void);
+
+  void clear_screen(void);
+  void normal_displaly(void);
+  void invert_display(void);
+
+private:
+  uint8_t buffer[BUFFER_SIZE];
+
+  void send_command(uint8_t command);
+  void send_command_data(uint8_t command, uint8_t data);
+  void set_page_address();
+  void set_column_address();
+};
 
 #endif /* OLED_128x64_H */

@@ -13,6 +13,7 @@ target_include_directories(esp8266oled PUBLIC
 target_link_libraries(esp8266oled PUBLIC
     arduino
     esp8266wire
+    adafruit_gfx
 )
 
 
